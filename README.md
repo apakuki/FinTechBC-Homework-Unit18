@@ -19,7 +19,7 @@ As a fintech engineer who’s working at one of the five largest banks in the wo
 ---
 ![alt="4th transaction"](Images/4th_transaction.png)
 ---
-![alt="transaction verification"](Images/Dropdown transaction verification.png)
+![alt="transaction verification"](Images/Dropdown_transaction_verification.png)
 
 ---
 
