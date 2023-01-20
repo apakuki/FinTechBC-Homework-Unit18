@@ -187,6 +187,7 @@ receiver = st.text_input("Receiver Data")
 # YOUR CODE HERE
 amount = st.text_input("Amount of Transaction")
 
+
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
     prev_block_hash = prev_block.hash_block()
