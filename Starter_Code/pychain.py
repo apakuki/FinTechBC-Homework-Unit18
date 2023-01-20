@@ -50,7 +50,11 @@ import hashlib
 # Create a Record Data Class that consists of the `sender`, `receiver`, and
 # `amount` attributes
 # YOUR CODE HERE
-
+@dataclass
+class Record:
+    sender: str
+    receiver: str
+    amount: float
 
 ################################################################################
 # Step 2:
@@ -68,7 +72,7 @@ class Block:
 
     # @TODO
     # Rename the `data` attribute to `record`, and set the data type to `Record`
-    data: Any
+    record: Record
 
     creator_id: int
     prev_hash: str = "0"
@@ -105,7 +109,7 @@ class PyChain:
 
         calculated_hash = block.hash_block()
 
-        num_of_zeros = "0" * self.difficulty
+        num_of_zeros = "0" * self.difficulty #number of "0" in the string with length determined by 'difficulty'
 
         while not calculated_hash.startswith(num_of_zeros):
 
@@ -113,7 +117,7 @@ class PyChain:
 
             calculated_hash = block.hash_block()
 
-        print("Wining Hash", calculated_hash)
+        print("Winning Hash", calculated_hash)
         return block
 
     def add_block(self, candidate_block):
@@ -166,19 +170,22 @@ pychain = setup()
 
 # @TODO:
 # Delete the `input_data` variable from the Streamlit interface.
-input_data = st.text_input("Block Data")
+
 
 # @TODO:
 # Add an input area where you can get a value for `sender` from the user.
 # YOUR CODE HERE
+sender = st.text_input("Sender Data")
 
 # @TODO:
 # Add an input area where you can get a value for `receiver` from the user.
 # YOUR CODE HERE
+receiver = st.text_input("Receiver Data")
 
 # @TODO:
 # Add an input area where you can get a value for `amount` from the user.
 # YOUR CODE HERE
+amount = st.text_input("Amount of Transaction")
 
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
@@ -189,7 +196,8 @@ if st.button("Add Block"):
     # which is set equal to a `Record` that contains the `sender`, `receiver`,
     # and `amount` values
     new_block = Block(
-        data=input_data,
+        #data=input_data,
+        record={sender, receiver, amount},
         creator_id=42,
         prev_hash=prev_block_hash
     )
